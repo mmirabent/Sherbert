@@ -3,9 +3,10 @@ require_relative "model"
 
 password = "";
 
-File.open("password.txt",r) do |f| {
+File.open("password.txt","r") do |f|
   password = f.gets
-}
+end
+
 
 # Set up the cinch bot
 bot = Cinch::Bot.new do
