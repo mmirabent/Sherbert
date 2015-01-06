@@ -1,0 +1,20 @@
+%html
+  %body
+    %script{:src => "jquery-2.1.3.min.js"}
+    %script{:src => "app.js"}
+    %script{:src => "jquery.cookie.js"}
+    %div.titles
+      %table
+        %tbody
+          %tr.header
+            %td.name Name
+            %td.title Title
+            %td.votes Votes
+          - unless @titles.empty?
+            - @titles.each do |title|
+              %tr
+                %td.name= title[:name]
+                %td.title= title[:title]
+                %td.votes= title[:votes]
+                %td
+                  %button{:id => title[:id]} up
