@@ -29,10 +29,10 @@ bot = Cinch::Bot.new do
     if title.valid?
       title.save
       message.user.send "You suggested \"#{title.title}\" as a show title"
-    elsif title.errors.on(:name) != nil
-      message.user.send "That title has already been suggested"
     else
-      message.user.send "An unexpected error occurred"
+      titles.errors.full_messages.each do |error_message|
+        message.user.send error_message
+      end
     end
   end
 end
