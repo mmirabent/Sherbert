@@ -7,7 +7,7 @@ class Title < Sequel::Model(:titles)
   def validate
     super
     validates_unique :title
-    validates_presence :title, :name
+    validates_presence [:title, :name]
   end
   
   def upvote
