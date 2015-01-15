@@ -11,6 +11,11 @@
       %div.titles-heading
         %h1 Sherbert
       %div.suggestion-form
+        %div{:class => "alert alert-danger alert-dismissable", :role => "alert", :hidden=>"true"}
+          %button.close{:type => "button", :'data-dismiss' => "alert", :'aria-label' => "Close"}
+            %span{:'aria-hidden' => "true"}&times;
+          %strong Error!
+          %span.message
         %form.form-inline{:action => "#"}
           %div.form-group
             %label.sr-only{:for => "nameInput"} Name
