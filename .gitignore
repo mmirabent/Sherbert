@@ -1,2 +1,3 @@
 password.txt
 *.db
+.DS_Store
