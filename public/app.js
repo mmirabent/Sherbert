@@ -2,12 +2,14 @@ $(document).ready(function () {
   "use strict";
   
   // Form logic
-  $('.form-inline').submit(function (event) {
-    var titleInput, nameInput, suggestion, valid = true;
+  $(".form-inline").submit(function (event) {
+    var titleInput, nameInput, suggestion, oldAlerts, valid = true;
     
     // Remove any error styles and alerts
     $(".form-group").removeClass("has-error");
-    $(".alert").remove();
+    oldAlerts = $("div.alert:visible");
+    oldAlerts.hide(200);
+    oldAlerts.remove();
     
     // Get data from the form elements
     titleInput = $("#titleInput").val();
@@ -15,9 +17,15 @@ $(document).ready(function () {
     
     // Helper function for adding alerts
     function addErrorAlert(errorMessage) {
-      //TODO: add a hidden div to the titles.haml file and clone it with jQuery instead of having all this HTML in here
-      var alertDiv = '<div class="alert alert-danger alert-dismissable" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>Error!</strong> ' + errorMessage + '</div>';
-      $(".suggestion-form").prepend(alertDiv);
+      // Duplicate the base alert
+      var alertDiv = $("div.base-alert").clone();
+      
+      // Set the alert message
+      alertDiv.find("span.message").text(errorMessage);
+      
+      // Insert the alert into the DOM and animate it into existence
+      $("div.suggestion-form").prepend(alertDiv);
+      alertDiv.show(300);
     }
     
     // Helper function for adding error style
@@ -27,7 +35,7 @@ $(document).ready(function () {
     
     // Called when the AJAX call returns success
     function suggestionSuccessCallback(response) {
-      // Some code to refresh the page
+      // TODO: Some code to refresh the page
       alert("woo");
     }
     
