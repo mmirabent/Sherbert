@@ -14,5 +14,10 @@ class Title < Sequel::Model(:titles)
     self.votes += 1
     save
   end
+  
+  def before_create
+    self.votes = 0
+    super
+  end
 end
   
