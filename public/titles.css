@@ -3,3 +3,7 @@
     max-width: 800px;
   }
 }
+
+body {
+  padding-top: 40px;
+}

@@ -8,9 +8,18 @@
     %link{:href => "titles.css", :rel => "stylesheet"}
   %body
     %div.container
-      %div.titles_heading
+      %div.titles-heading
         %h1 Sherbert
-      %div.titles_table
+      %div.suggestion-form
+        %form.form-inline
+          %div.form-group
+            %label.sr-only{:for => "nameInput"} Name
+            %input.form-control{:type => "text", :id => "nameInput", :placeholder => "Your nickname"}
+          %div.form-group
+            %label.sr-only{:for => "titleInput"} Title
+            %input.form-control{:type => "text", :id => "titleInput", :placeholder => "Title suggestion"}
+          %button{:class => "btn btn-default", :type => "submit"} Suggest
+      %div.titles-table
         %table{:class => "table table-striped"}
           %thead
             %tr
