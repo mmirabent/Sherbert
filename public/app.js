@@ -33,10 +33,9 @@ $(document).ready(function () {
     // This get's called when the ajax call below returns successfully, it 
     // updates the votes in the table with the latest data from the server
     function upvoteSuccessCallback(jsonData) {
-      var response = JSON.parse(jsonData);
 
       // Locate the votes cell in the table
-      element.parent().siblings('.votes').text(response.votes);
+      element.parent().siblings('.votes').text(jsonData.votes);
     }
 
     // This ajax call votes for our favorite title and gets the new vote count 
