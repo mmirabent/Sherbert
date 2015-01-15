@@ -3,10 +3,15 @@ require 'haml'
 require 'json'
 require 'sinatra/json'
 require 'rack/throttle'
-# require_relative 'bot' # Comment this line to not run the bot
+# require_relative 'bot' # Comment this line to not run the bot for development
 require_relative 'model'
 
-use Rack::Throttle::Interval, :min => 1.0
+# Had to disable throttling for now, because javascript and css pages are being
+# served from the app itself (because webbrick). In production these files will
+# be served from the web server itself (probably nginx) and never seen by 
+# sinatra
+
+# use Rack::Throttle::Interval, :min => 1.0
 
 get '/' do
   @titles = Title.order_by(:votes).reverse
